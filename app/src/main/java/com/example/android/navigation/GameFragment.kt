@@ -99,16 +99,15 @@ class GameFragment : Fragment() {
                         setQuestion()
                         binding.invalidateAll()
                     } else {
+                        // We've won!  Navigate to the gameWonFragment.
                         view.findNavController()
                                 .navigate(GameFragmentDirections
-                                        .actionGameFragmentToGameWonFragment())
-                        // We've won!  Navigate to the gameWonFragment.
+                                        .actionGameFragmentToGameWonFragment(numQuestions, questionIndex))
                     }
                 } else {
-                    view.findNavController()
-                            .navigate(GameFragmentDirections
-                                    .actionGameFragmentToGameOverFragment())
                     // Game over! A wrong answer sends us to the gameOverFragment.
+                    view.findNavController()
+                            .navigate(GameFragmentDirections.actionGameFragmentToGameOverFragment())
                 }
             }
         }
